@@ -12,12 +12,11 @@ export default function Input() {
 	};
 
 	const addListItem = () => {
-		setTodos(() => {
-			const newTodo = [...todos, text];
-			return newTodo;
-		});
-		console.log(todos);
+		const newTodo = [...todos, text];
+		return newTodo;
 	};
+
+	console.log(todos);
 
 	return (
 		<div className="input-div">
