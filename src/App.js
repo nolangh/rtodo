@@ -1,27 +1,36 @@
 import React, { useState } from "react";
 import "./css/App.css";
 import Header from "./Header";
-import data from "./data.json";
+//import data from "./data.json";
 import TodoList from "./TodoList";
-import Form from "./Form";
+import Input from "./Form";
 
 export default function App() {
-	const [todoList, setTodoList] = useState(data);
+	const [todoList, setTodoList] = useState([]);
 
 	const handleToggle = (id) => {
 		let mapped = todoList.map((task) => {
-			return task.id == id
+			return task.id === id
 				? { ...task, complete: !task.complete }
 				: { ...task };
 		});
 		setTodoList(mapped);
 	};
 
-	const handleFilter = () => {
-		let filtered = todoList.filter((task) => {
-			return !task.complete;
-		});
-		setTodoList(filtered);
+	// const handleFilter = () => {
+	// 	let filtered = todoList.filter((task) => {
+	// 		return !task.complete;
+	// 	});
+	// 	setTodoList(filtered);
+	// };
+
+	const addTask = (userInput) => {
+		let copy = [...todoList];
+		copy = [
+			...copy,
+			{ id: todoList.length + 1, task: userInput, complete: false },
+		];
+		setTodoList(copy);
 	};
 
 	return (
@@ -30,9 +39,9 @@ export default function App() {
 			<TodoList
 				todoList={todoList}
 				handleToggle={handleToggle}
-				handleFilter={handleFilter}
+				// handleFilter={handleFilter}
 			/>
-			<Form addTask={addTask} />
+			<Input addTask={addTask} />
 		</main>
 	);
 }

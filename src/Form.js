@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const input = ({ addTask }) => {
+const Input = ({ addTask }) => {
 	const [userInput, setuserInput] = useState("");
 
 	const handleChange = (e) => {
@@ -14,19 +14,17 @@ const input = ({ addTask }) => {
 	};
 
 	return (
-		<div className="input-div">
-			<form onSubmit={handleSubmit}>
-				<input
-					className="input"
-					value={userInput}
-					type="text"
-					onChange={handleChange}
-					placeholder="Enter task"
-				/>
-				<button className="submit-btn">Submit</button>
-			</form>
-		</div>
+		<form onSubmit={handleSubmit}>
+			<input
+				className="input"
+				value={userInput}
+				type="text"
+				onChange={handleChange}
+				placeholder="Enter task"
+			/>
+			<button className="submit-btn">Submit</button>
+		</form>
 	);
 };
 
-export default input;
+export default Input;
