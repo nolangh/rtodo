@@ -8,11 +8,12 @@ import Todo from "./Todo";
 import TodoList from "./TodoList";
 
 export default function App() {
-	const [TodoList, setTodoList] = useState(data);
+	const [todoList, setTodoList] = useState(data);
 
 	return (
-		<main className="main">
+		<main className="App">
 			<Header />
+			<TodoList todoList={todoList} />
 		</main>
 	);
 }
